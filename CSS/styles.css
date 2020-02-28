@@ -1,0 +1,9 @@
+#logo {
+    max-width: 20%;
+}
+
+header {
+    padding: 1em;
+    background-color: rgb(239, 51, 76);
+    display: flex;
+}
