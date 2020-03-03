@@ -11,6 +11,7 @@ header {
 
 body {
     text-align: center;
+    font-family: Ropa Sans,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .title {
@@ -54,6 +55,11 @@ main {
     -webkit-text-stroke-color: black;
     text-shadow: 5px 5px #ff0000;
     font-family: Luckiest Guy, Bebas Neue, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h2 .name-letter{
+    font-size: 1.24em;
+    text-shadow: 2px 2px #ff0000;
 }
 
 #h {
@@ -107,6 +113,22 @@ main {
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
     cursor: pointer; /* Add a pointer on hover */
+}
+
+.card {
+    padding-top: 2em;
+    margin: auto;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.43);
+}
+
+.img-header {
+    max-height: 100vw;
+    padding-bottom: 1em;
+}
+
+h2 {
+    font-family: Indie Flower, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 @media screen and (max-width:450px) {
