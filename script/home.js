@@ -32,10 +32,17 @@ function viewHeart() {
     animateCSS('#animated-heart', 'zoomInRight');
 }
 
+var callback = function (e) {
+    letterAnimation(e.target);
+    viewHeart();
+    setTimeout(function () { window.location.replace(`${e.target.id}.html`); }, 4000);
+}
+
 nameLetters.forEach(function (letter) {
-    letter.addEventListener('click', function (e) {
-        letterAnimation(e.target);
-        viewHeart();
-        setTimeout(function() {window.location.replace(`${e.target.id}.html`);}, 4000);
-    })
+    letter.addEventListener('click', callback);
+    letter.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            callback(e);
+        }
+    });
 });
