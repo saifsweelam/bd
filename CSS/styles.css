@@ -21,7 +21,7 @@ body {
 }
 
 main {
-    height: 130vh;
+    height: 160vh;
     background-image: url('../images/footage.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -120,6 +120,7 @@ h2 .name-letter{
     width: 80%;
     background-color: rgba(255, 255, 255, 0.43);
     border-radius: 0.5em;
+    animation-duration: 0.5s;
 }
 
 .img-header {
@@ -130,6 +131,7 @@ h2 .name-letter{
 }
 
 h2 {
+    animation-iteration-count: infinite;
     font-family: Indie Flower, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -167,6 +169,12 @@ h2 {
 	color: #FFF;
 }
 
+.nav-button.return {
+    color: red;
+    border: 1px solid red;
+    background-color: rgba(255, 0, 0, 0.199);
+}
+
 .story {
     color: rgb(239, 51, 76);
     -webkit-text-stroke-width: 1px;
@@ -194,6 +202,23 @@ div.comment {
 #doctor-vector {
     max-height: 30vh;
     max-width: 15vh;
+    animation-iteration-count: infinite;
+}
+
+#click-here {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 30vw;
+    height: 30vw;
+    z-index: 1000;
+    cursor: pointer;
+    animation-iteration-count: infinite;
+}
+
+#baby {
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
 }
 
 @media screen and (max-width:450px) {
@@ -223,7 +248,7 @@ div.comment {
     h2 {
         font-size: 2em;
     }
-    
+
     h2 .name-letter {
         font-size: 2em;
     }
