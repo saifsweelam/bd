@@ -6,8 +6,7 @@ const overlay = document.querySelector('.overlay');
 const clickHereBtn = document.querySelector('#click-here');
 
 
-function animateCSS(element, animationName, callback) {
-    const node = document.querySelector(element);
+function animateCSS(node, animationName, callback) {
     node.classList.add('animated', animationName);
 
     function handleAnimationEnd() {
@@ -26,40 +25,56 @@ clickHereBtn.addEventListener('click', function () {
     music.play();
 })
 
-nextBtn.addEventListener('click', function () {
+var goNext = function () {
     let currentCard = document.querySelector('.shown');
     let currentCardId = parseInt(currentCard.id);
     if (currentCardId < cards.length) {
         let nextCard = document.getElementById(`${currentCardId + 1}`);
-        animateCSS('.shown', 'zoomOutLeft', function () {
+        animateCSS(currentCard, 'zoomOutLeft', function () {
             currentCard.classList.remove('shown');
             currentCard.classList.toggle('hidden');
             nextCard.classList.remove('hidden');
             nextCard.classList.toggle('shown');
-            animateCSS('.shown', 'zoomInRight');
+            animateCSS(nextCard, 'zoomInRight');
         })
     } else {
-        window.location.replace('index.html');
+        const currentPage = location.href.split("/").pop().split('.')[0]
+        window.location.replace(`index.html?${currentPage}=1`)
     }
     if (currentCardId === cards.length - 1) {
         nextBtn.textContent = 'Return Home >>';
         nextBtn.classList.toggle('return');
     }
-})
+}
 
-backBtn.addEventListener('click', function () {
+var goBack = function () {
     let currentCard = document.querySelector('.shown');
     let currentCardId = parseInt(currentCard.id);
     if (currentCardId > 1) {
         let prevCard = document.getElementById(`${currentCardId - 1}`);
-        animateCSS('.shown', 'zoomOutRight', function () {
+        animateCSS(currentCard, 'zoomOutRight', function () {
             currentCard.classList.remove('shown');
             currentCard.classList.toggle('hidden');
             prevCard.classList.remove('hidden');
             prevCard.classList.toggle('shown');
-            animateCSS('.shown', 'zoomInLeft');
+            animateCSS(prevCard, 'zoomInLeft');
         })
     } else {
-        window.location.replace('index.html');
+        window.location.replace('index.html')
+    }
+}
+
+backBtn.addEventListener('click', goBack)
+nextBtn.addEventListener('click', goNext)
+document.addEventListener('keydown', function(e) {
+    switch(e.which) {
+        case 37: {
+            goBack()
+            break;
+        }
+        case 39: {
+            goNext()
+            break;
+        }
     }
 })

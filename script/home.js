@@ -1,5 +1,12 @@
 const nameLetters = document.querySelectorAll('.name-letter');
 
+const query = new URLSearchParams(window.location.search);
+nameLetters.forEach(function(letter) {
+    if (query.has(letter.id)) {
+        letter.textContent = '✔'
+    }
+})
+
 function letterAnimation(letter) {
     letter.classList.add('animated', 'hinge');
 }
