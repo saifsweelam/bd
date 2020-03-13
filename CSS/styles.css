@@ -229,6 +229,11 @@ div.comment {
     -webkit-text-stroke-color: black;
 }
 
+#message {
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}
+
 @media screen and (max-width:450px) {
 
     .name {
