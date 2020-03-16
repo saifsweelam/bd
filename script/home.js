@@ -3,7 +3,7 @@ const nameLetters = document.querySelectorAll('.name-letter');
 const query = new URLSearchParams(window.location.search);
 nameLetters.forEach(function(letter) {
     if (query.has(letter.id)) {
-        letter.textContent = '✔'
+        letter.textContent = '✔️'
     }
 })
 

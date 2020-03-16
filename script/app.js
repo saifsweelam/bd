@@ -38,8 +38,8 @@ var goNext = function () {
             animateCSS(nextCard, 'zoomInRight');
         })
     } else {
-        const currentPage = location.href.split("/").pop().split('.')[0]
-        window.location.replace(`index.html?${currentPage}=1`)
+        const currentPage = location.href.split("/").pop().split('.')[0];
+        window.location.replace(`index.html?${currentPage}=1`);
     }
     if (currentCardId === cards.length - 1) {
         nextBtn.textContent = 'Return Home >>';
@@ -60,21 +60,25 @@ var goBack = function () {
             animateCSS(prevCard, 'zoomInLeft');
         })
     } else {
-        window.location.replace('index.html')
+        window.location.replace('index.html');
+    }
+    if (currentCardId === cards.length) {
+        nextBtn.textContent = 'Next >>';
+        nextBtn.classList.remove('return');
     }
 }
 
-backBtn.addEventListener('click', goBack)
-nextBtn.addEventListener('click', goNext)
+backBtn.addEventListener('click', goBack);
+nextBtn.addEventListener('click', goNext);
 document.addEventListener('keydown', function(e) {
     switch(e.which) {
         case 37: {
-            goBack()
+            goBack();
             break;
         }
         case 39: {
-            goNext()
+            goNext();
             break;
         }
     }
-})
+});
