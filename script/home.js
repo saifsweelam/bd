@@ -39,7 +39,7 @@ function viewHeart() {
     animateCSS('#animated-heart', 'zoomInRight');
 }
 
-var callback = function (e) {
+let callback = function (e) {
     letterAnimation(e.target);
     viewHeart();
     setTimeout(function () { window.location.replace(`${e.target.id}.html`); }, 4000);

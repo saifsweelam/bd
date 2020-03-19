@@ -4,6 +4,7 @@ const nextBtn = document.querySelector('#next');
 const music = document.querySelector('audio');
 const overlay = document.querySelector('.overlay');
 const clickHereBtn = document.querySelector('#click-here');
+const snackbar = document.querySelector('.snackbar')
 
 
 function animateCSS(node, animationName, callback) {
@@ -23,9 +24,16 @@ clickHereBtn.addEventListener('click', function () {
     overlay.classList.toggle('hidden');
     clickHereBtn.classList.toggle('hidden');
     music.play();
+    snackbar.classList.remove('hidden')
+    setTimeout(function() {
+        snackbar.classList.toggle('hidden')
+    }, 4000)
 })
 
-var goNext = function () {
+let goNext = function () {
+    backBtn.removeEventListener('click', goBack);
+    nextBtn.removeEventListener('click', goNext);
+    document.removeEventListener('keydown', keyboardCallback);
     let currentCard = document.querySelector('.shown');
     let currentCardId = parseInt(currentCard.id);
     if (currentCardId < cards.length) {
@@ -35,7 +43,11 @@ var goNext = function () {
             currentCard.classList.toggle('hidden');
             nextCard.classList.remove('hidden');
             nextCard.classList.toggle('shown');
-            animateCSS(nextCard, 'zoomInRight');
+            animateCSS(nextCard, 'zoomInRight', function() {
+                backBtn.addEventListener('click', goBack);
+                nextBtn.addEventListener('click', goNext);
+                document.addEventListener('keydown', keyboardCallback);
+            });
         })
     } else {
         const currentPage = location.href.split("/").pop().split('.')[0];
@@ -47,7 +59,10 @@ var goNext = function () {
     }
 }
 
-var goBack = function () {
+let goBack = function () {
+    backBtn.removeEventListener('click', goBack);
+    nextBtn.removeEventListener('click', goNext);
+    document.removeEventListener('keydown', keyboardCallback);
     let currentCard = document.querySelector('.shown');
     let currentCardId = parseInt(currentCard.id);
     if (currentCardId > 1) {
@@ -57,7 +72,11 @@ var goBack = function () {
             currentCard.classList.toggle('hidden');
             prevCard.classList.remove('hidden');
             prevCard.classList.toggle('shown');
-            animateCSS(prevCard, 'zoomInLeft');
+            animateCSS(prevCard, 'zoomInLeft', function() {
+                backBtn.addEventListener('click', goBack);
+                nextBtn.addEventListener('click', goNext);
+                document.addEventListener('keydown', keyboardCallback);
+            });
         })
     } else {
         window.location.replace('index.html');
@@ -68,9 +87,7 @@ var goBack = function () {
     }
 }
 
-backBtn.addEventListener('click', goBack);
-nextBtn.addEventListener('click', goNext);
-document.addEventListener('keydown', function(e) {
+let keyboardCallback = function(e) {
     switch(e.which) {
         case 37: {
             goBack();
@@ -81,4 +98,8 @@ document.addEventListener('keydown', function(e) {
             break;
         }
     }
-});
+}
+
+backBtn.addEventListener('click', goBack);
+nextBtn.addEventListener('click', goNext);
+document.addEventListener('keydown', keyboardCallback);

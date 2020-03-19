@@ -185,7 +185,7 @@ h2 {
 
 .card-image {
     width: 100%;
-    max-height: 100%;
+    max-height: 120vh;
 }
 
 div.comment {
@@ -242,6 +242,47 @@ div.comment {
     -webkit-text-stroke-color: black;
 }
 
+.snackbar {
+    visibility: visible;
+    position: fixed;
+    bottom: 20px;
+    left: 10px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 17px;
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
+    animation: fadein 0.5s, fadeout 0.5s 3.5s;
+}
+
+.snackbar.hidden {
+    visibility: hidden;
+}
+
+
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+  
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+  
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+  
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
 @media screen and (max-width:450px) {
 
     .name {
@@ -275,6 +316,10 @@ div.comment {
 
     h2 .name-letter {
         font-size: 2em;
+    }
+
+    iframe.video {
+        height: 400px;
     }
 
 }
