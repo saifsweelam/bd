@@ -1,4 +1,5 @@
-const text = document.querySelector('.type')
+const currentCard = document.querySelector('.shown')
+const text = currentCard.querySelector('.type')
 
 const content = text.textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim()
 let counter = 0
