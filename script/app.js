@@ -5,14 +5,20 @@ const music = document.querySelector('audio');
 const overlay = document.querySelector('.overlay');
 const clickHereBtn = document.querySelector('#click-here');
 const snackbar = document.querySelector('.snackbar')
+const musicAlternative = document.querySelector('audio.alternative')
 
+function sendMessage(node) {
+    const textarea = node.querySelector('.type_msg');
+    const message = textarea.value;
+    window.open(`https://api.whatsapp.com/send?text=${message}`, 'popup', 'width=600,height=600')
+}
 
 function clearAllIntervals(w) {
-        w = w || window;
-        var i = w.setInterval(function () { }, 100000);
-        while (i >= 0) {
-            w.clearInterval(i--);
-        }
+    w = w || window;
+    var i = w.setInterval(function () { }, 100000);
+    while (i >= 0) {
+        w.clearInterval(i--);
+    }
 }
 
 
@@ -37,6 +43,9 @@ clickHereBtn.addEventListener('click', function () {
     setTimeout(function () {
         snackbar.classList.toggle('hidden')
     }, 4000)
+    music.addEventListener('ended', function () {
+        musicAlternative.play();
+    })
 })
 
 let goNext = function () {
@@ -72,6 +81,12 @@ let goNext = function () {
                         clearInterval(typewriter);
                     }
                 }, 100);
+            }
+            if (nextCard.querySelector('.type_msg')) {
+                const sendBtn = nextCard.querySelector('.send_btn')
+                sendBtn.addEventListener('click', function () {
+                    sendMessage(nextCard)
+                })
             }
         })
     } else {
