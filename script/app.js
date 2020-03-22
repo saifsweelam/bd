@@ -10,7 +10,7 @@ const musicAlternative = document.querySelector('audio.alternative')
 function sendMessage(node) {
     const textarea = node.querySelector('.type_msg');
     const message = textarea.value;
-    window.open(`https://api.whatsapp.com/send?text=${message}`, 'popup', 'width=600,height=600')
+    window.open(`https://api.whatsapp.com/send?phone=+201208218000&text=${message}`, 'popup', 'width=600,height=600')
 }
 
 function clearAllIntervals(w) {
