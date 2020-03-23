@@ -277,6 +277,23 @@ div.comment {
     -webkit-text-stroke-color: white;
 }
 
+h3, h4 {
+    font-family: Acme, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h3 {
+    font-size: 2em;
+    color: darkblue;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    margin: 1em;
+}
+
+h4 {
+    font-size: 1.3em;
+    text-align: left;
+    color: white;
+}
 
 
 /* Animations to fade the snackbar in and out */

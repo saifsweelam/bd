@@ -5,7 +5,7 @@ const music = document.querySelector('audio');
 const overlay = document.querySelector('.overlay');
 const clickHereBtn = document.querySelector('#click-here');
 const snackbar = document.querySelector('.snackbar')
-const musicAlternative = document.querySelector('audio.alternative')
+const musicAlternative = document.querySelectorAll('audio.alternative')
 
 function sendMessage(node) {
     const textarea = node.querySelector('.type_msg');
@@ -44,7 +44,10 @@ clickHereBtn.addEventListener('click', function () {
         snackbar.classList.toggle('hidden')
     }, 4000)
     music.addEventListener('ended', function () {
-        musicAlternative.play();
+        musicAlternative[0].play();
+        if (musicAlternative.length === 2) {
+            musicAlternative[0].addEventListener('ended', function () { musicAlternative[1].play(); })
+        }
     })
 })
 

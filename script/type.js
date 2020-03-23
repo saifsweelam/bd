@@ -15,10 +15,10 @@ while (counter < content.length) {
 }
 */
 
-var typewriter = setInterval(function(){
+var typewriter = setInterval(function () {
     text.textContent += content[counter];
     counter++;
-    if (counter > (content.length-1)) {
+    if (counter > (content.length - 1)) {
         clearInterval(typewriter);
     }
 }, 100);
